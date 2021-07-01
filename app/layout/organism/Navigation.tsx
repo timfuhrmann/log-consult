@@ -1,6 +1,6 @@
 import React from "react";
-import { Content } from "../../css/content";
 import styled from "styled-components";
+import { Content } from "../../css/content";
 import { NavigationItem } from "../atom/NavigationItem";
 import { LogoColored } from "../../icon/LogoColored";
 import { routes } from "../../lib/routes";
@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 
 const NavigationWrapper = styled.div`
     position: fixed;
+    z-index: 5;
     top: 0;
     left: 0;
     width: 100%;
