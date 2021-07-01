@@ -1,7 +1,15 @@
 export const theme = {
     //region Color
-    black: "#000",
+    black: "#171514",
     white: "#fff",
+
+    primary: "#002543",
+
+    accent: "#939393",
+    primaryAccent: "#de303d",
+    secondaryAccent: "#bfbebe",
+    
+    backgroundColor: "#f8f8f8",
     //endregion
 
     //region Breakpoints
