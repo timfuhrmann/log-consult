@@ -1,82 +1,9 @@
-#### In progress. Converting an older Angular application ([Log & Consult](https://log-consult.net/)) to Next.js.
+In progress: converting one of my older Angular applications ([Log & Consult](https://log-consult.net/)) to a [Next.js](https://nextjs.org/) project using [Typescript](https://www.typescriptlang.org/), [Styled Components](https://styled-components.com/) and [Contentful's GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).
 
-A [Next.js](https://nextjs.org/) project using [Typescript](https://www.typescriptlang.org/), [Styled Components](https://styled-components.com/) and [Contentful's GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).
+### Static Product Page Generation
+A similar usage including documentation can be found [within one of my other repos.](https://github.com/timfuhrmann/next-graphql-apollo-contentful)
 
-## Static Generation
-The application and its contents, including all products, are statically pre-rendered and revalidated every 24 hours. <br/>
-To do so, the following steps are being followed:
-
-Respective files:
-1. [Product Page](pages/produkte/[id]/index.tsx)
-2. [Data fetching](app/lib/api/backend.ts)
-
-### First step
-
-Within `getStaticPaths`, fetch all product identifiers to tell Next.js what params to expect and pre-render:
-
-```typescript
-export const getStaticPaths = async () => {
-    const res = await getAllProductIds();
-
-    if (!res) {
-        throw new Error("couldn't fetch product identifiers");
-    }
-
-    const paths = res.map(id => ({
-        params: { id },
-    }));
-
-    // Pre-render only fetched paths at build time.
-    // Server-side render on demand if the path doesn't exist.
-    return { paths, fallback: "blocking" };
-};
-```
-```typescript
-export const getAllProductIds = async (): Promise<string[] | null> => {
-    const entries = await fetchGraphQL<AllProductIds>(
-        `query {
-            productCollection {
-                items {
-                    sys {
-                        id
-                    }
-                }
-            }
-        }`
-    );
-
-    return extractProductIds(entries);
-};
-```
-
-### Second step
-
-Within `getStaticProps`, use `params` to fetch the respective product on build:
-```typescript
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const id = params?.id;
-
-    if (!id || "string" !== typeof id) {
-        return {
-            notFound: true,
-        };
-    }
-
-    const product = await getProductById(id);
-
-    if (!product) {
-        return {
-            notFound: true,
-        };
-    }
-
-    return {
-        props: { product },
-    };
-};
-```
-
-## Getting Started
+### Getting Started
 
 Run the development server:
 
