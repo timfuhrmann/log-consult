@@ -1,7 +1,4 @@
-In progress: converting one of my older Angular applications ([Log & Consult](https://log-consult.net/)) to a [Next.js](https://nextjs.org/) project using [Typescript](https://www.typescriptlang.org/), [Styled Components](https://styled-components.com/) and [Contentful's GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).
-
-### Static Product Page Generation
-A similar usage including documentation can be found [within one of my other repos.](https://github.com/timfuhrmann/next-graphql-apollo-contentful)
+Convertion of an older Angular project ([Log & Consult](https://log-consult.net/)) to a [Next.js](https://nextjs.org/) application using [Typescript](https://www.typescriptlang.org/), [Styled Components](https://styled-components.com/) and [Contentful's GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).
 
 ### Getting Started
 
